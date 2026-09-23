@@ -11,6 +11,7 @@ Pod::Spec.new do |s|
   s.authors      = package["author"]
 
   s.platforms    = { :ios => min_ios_version_supported }
+  s.frameworks = "Vision", "CoreImage"
   s.source       = { :git => "https://github.com/CVRamana/react-native-fast-background-removal.git", :tag => "#{s.version}" }
 
   s.source_files = "ios/**/*.{h,m,mm,swift,cpp}"

@@ -1,7 +1,7 @@
 {
   "name": "react-native-fast-background-removal",
-  "version": "0.1.0",
-  "description": "on device background remover",
+  "version": "0.1.1",
+  "description": "Lightning-fast, 100% on-device AI background removal for React Native.",
   "main": "./lib/module/index.js",
   "types": "./lib/typescript/src/index.d.ts",
   "exports": {
@@ -43,9 +43,14 @@
     "build:web": "vite build"
   },
   "keywords": [
-    "react-native",
-    "ios",
-    "android"
+  "react-native",
+  "background-removal",
+  "image-processing",
+  "ml-kit",
+  "vision",
+  "ai",
+  "on-device",
+  "turbomodules"
   ],
   "repository": {
     "type": "git",
