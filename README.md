@@ -2,6 +2,8 @@
 
 Lightning-fast, 100% on-device AI background removal for React Native. **No third-party APIs. No subscriptions. Completely private.**
 
+![App Demo GIF](https://github.com/user-attachments/assets/139f244f-dbbd-4599-85ad-8a68ea563161)
+
 ![Platform](https://img.shields.io/badge/Platform-Android%20%7C%20iOS-brightgreen.svg)
 ![Architecture](<https://img.shields.io/badge/Architecture-TurboModules%20(New%20Arch)-blue.svg>)
 ![License](https://img.shields.io/badge/License-MIT-green.svg)

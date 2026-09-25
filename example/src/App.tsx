@@ -18,7 +18,7 @@ export default function App() {
   const [processedUri, setProcessedUri] = useState<string | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
 
-  // 1. गैलरी से इमेज सेलेक्ट करें
+  // 1. select image from gallery
   const pickImage = async () => {
     const result = await launchImageLibrary({
       mediaType: 'photo',
@@ -27,14 +27,14 @@ export default function App() {
 
     if (result.assets && result.assets.length > 0 && result.assets[0].uri) {
       setOriginalUri(result.assets[0].uri);
-      setProcessedUri(null); // रीसेट पुराना रिजल्ट
+      setProcessedUri(null); // reset old result
     }
   };
 
-  // 2. बैकग्राउंड रिमूवल रन करें
+  // 2. remove background
   const handleRemoveBackground = async () => {
     if (!originalUri) {
-      Alert.alert('ध्यान दें', 'पहले गैलरी से एक फोटो सेलेक्ट करें!');
+      Alert.alert('Attention', 'Please select a photo from the gallery first!');
       return;
     }
 
@@ -42,7 +42,7 @@ export default function App() {
       setLoading(true);
       const startTime = Date.now();
 
-      // हमारा नेटिव पैकेज कॉल हुआ
+      // Call the native module to remove background
       const transparentImageUri = await removeBackground(originalUri);
 
       const duration = Date.now() - startTime;
@@ -66,7 +66,7 @@ export default function App() {
         {/* Buttons */}
         <View style={styles.buttonRow}>
           <TouchableOpacity style={styles.button} onPress={pickImage}>
-            <Text style={styles.buttonText}>फोटो चुनें</Text>
+            <Text style={styles.buttonText}>Choose Photo</Text>
           </TouchableOpacity>
 
           <TouchableOpacity
@@ -75,7 +75,7 @@ export default function App() {
             disabled={!originalUri || loading}
           >
             <Text style={styles.buttonText}>
-              {loading ? 'प्रोसेसिंग...' : 'बैकग्राउंड हटाएं'}
+              {loading ? 'Processing...' : 'Remove Background'}
             </Text>
           </TouchableOpacity>
         </View>
@@ -83,7 +83,7 @@ export default function App() {
         {loading && (
           <View style={styles.loaderContainer}>
             <ActivityIndicator size="large" color="#007AFF" />
-            <Text style={styles.loadingText}>AI मॉडल रन हो रहा है...</Text>
+            <Text style={styles.loadingText}>AI model is running...</Text>
           </View>
         )}
 
@@ -91,14 +91,14 @@ export default function App() {
         <View style={styles.previewContainer}>
           {originalUri && (
             <View style={styles.imageCard}>
-              <Text style={styles.imageLabel}>ओरिजिनल फोटो</Text>
+              <Text style={styles.imageLabel}>Original Photo</Text>
               <Image source={{ uri: originalUri }} style={styles.previewImage} />
             </View>
           )}
 
           {processedUri && (
             <View style={[styles.imageCard, styles.checkerboardBg]}>
-              <Text style={styles.imageLabel}>बैकग्राउंड रिमूव्ड (PNG)</Text>
+              <Text style={styles.imageLabel}>Background Removed (PNG)</Text>
               <Image source={{ uri: processedUri }} style={styles.previewImage} resizeMode="contain" />
             </View>
           )}
